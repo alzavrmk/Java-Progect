@@ -3,9 +3,20 @@
 package homeWork02;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+//import java.lang.System.Logger;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 public class taskSort {
-    public static void main(String[] args) {
+    public static void main(String[] args)throws IOException {
+        Logger ll = Logger.getLogger(taskSort.class.getName());
+        String logsPath = "lod.txt";
+        FileHandler fh= new FileHandler(logsPath, false);
+        ll.addHandler(fh);
+        SimpleFormatter formatter = new SimpleFormatter();
+        fh.setFormatter(formatter);
         int[] array = new int [] {1, 2, 5, 3, 8 , 7, 6, 9};
         String s="";
         int k = 0;
@@ -20,7 +31,7 @@ public class taskSort {
                 }
             s = arrToString(array);
             System.out.println(s);
-            addStringInFile(s);
+            addStringlogFile(ll,s);
             }
         }
     }
@@ -32,13 +43,16 @@ public class taskSort {
         return str;
         
     }
-    static void addStringInFile(String str) {
-        try (
-            FileWriter fw = new FileWriter("file.txt", true)) {
-            fw.write(str + '\n');
-            fw.close();
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
+    static void addStringlogFile(Logger lg, String str) {
+        lg.log(Level.INFO, str);
     }
+    // static void addStringInFile(String str) {
+    //     try (
+    //         FileWriter fw = new FileWriter("file.txt", true)) {
+    //         fw.write(str + '\n');
+    //         fw.close();
+    //     } catch (IOException ex) {
+    //         System.out.println(ex.getMessage());
+    //     }
+    // }
 }
