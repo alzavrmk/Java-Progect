@@ -2,26 +2,23 @@ package homework05;
 
 public class ferz {
   public static void main(String[] args){
-    arrangeQueens();
+    arr();
   }
   public static void printMatrix(char[][] board) {
       // 8x8 board
       int n = board.length;
-      System.out.println("------------------------------");
+      System.out.println();
       for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-          System.out.print(board[i][j] + "|");
+          System.out.print(board[i][j]);
         }
         System.out.println();
       }
-      System.out.println("------------------------------");
+      System.out.println();
   
     }
   
     public static void updateBoard(int row, int col, boolean[][] logicalBoard) {
-      // Turn all the cases corresponding to the row, column and diagonals of the element added to
-      // false
-      // 8x8 board
       int n = logicalBoard.length;
   
       // update the row
@@ -84,7 +81,7 @@ public class ferz {
       return copy;
     }
   
-    public static void arrangeQueens(char[][] board, boolean[][] logicalBoard, int rowNumber) {
+    public static void arr(char[][] board, boolean[][] logicalBoard, int rowNumber) {
       if (rowNumber == 8) {
         printMatrix(board);
         return;
@@ -95,25 +92,25 @@ public class ferz {
         if (logicalBoard[rowNumber][column]) {
           char[][] newBoard = copyArray(board);
           boolean[][] newLogicalBoard = copyArray(logicalBoard);
-          newBoard[rowNumber][column] = 'Q';
+          newBoard[rowNumber][column] = 'x';
           newLogicalBoard[rowNumber][column] = false;
           updateBoard(rowNumber, column, newLogicalBoard);
-          arrangeQueens(newBoard, newLogicalBoard, rowNumber + 1);
+          arr(newBoard, newLogicalBoard, rowNumber + 1);
         }
       }
     }
   
-    public static void arrangeQueens() {
+    public static void arr() {
       int N = 8;
       char[][] board = new char[8][8];
       boolean[][] logicalBoard = new boolean[8][8];
       for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
-          board[i][j] = ' ';
+          board[i][j] = '0';
           logicalBoard[i][j] = true;
         }
       }
-      arrangeQueens(board, logicalBoard, 0);
+      arr(board, logicalBoard, 0);
     }
       
         
