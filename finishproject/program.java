@@ -20,9 +20,10 @@ public class program {
         nbList.add(nb.add("Asus","Linux","Gray", 16, 250, 60000));
         nbList.add(nb.add("Honor","None OC","black", 8, 120, 40000));
         nbList.add(nb.add("Huawei","Win11","black", 16, 250, 80000));
-        System.out.println(nbList);
+        //System.out.println(nbList);
 
         Scanner sc = new Scanner(System.in);
+        Scanner schdd = new Scanner(System.in);
 /* 
         
         
@@ -39,6 +40,7 @@ public class program {
         String os = null;
 */
         int numMenu = 0;
+        int min = 0;
         Set<Integer> ramval = new HashSet<Integer>();
 
         while (true) {
@@ -52,12 +54,30 @@ public class program {
             if (numMenu == 1){
                 for (NooteBook1 nb1: nbList) {
                     ramval.add(nb1.getramValue()); 
-                    //System.out.println(ramval);   
-
+                    //System.out.println(ramval);
                 }
-            System.out.println(ramval);
-            }
-            else { if (numMenu == 5) {
+                System.out.println(ramval);
+                System.out.println("Введите минимальное значение оперативной памяти искомого ноутбука:");
+                min = sc.nextInt();
+                for (NooteBook1 nb1: nbList) {
+                    if (nb1.getramValue()>= min){
+                        System.out.println(nb1);
+                    }
+                } 
+            }else {
+                if (numMenu == 2){
+                    for (NooteBook1 nb1: nbList) {
+                        ramval.add(nb1.gethddValue());
+                    }
+                    System.out.println(ramval);
+                    System.out.println("Введите минимальное значение объема жесткого диска искомого ноутбука:");
+                    min = schdd.nextInt();
+                    for (NooteBook1 nb1: nbList) {
+                        if (nb1.gethddValue()>= min){
+                        System.out.println(nb1);
+                    }
+                    }
+            } else { if (numMenu == 5) {
                     break;}}
             
    /*             try (FileWriter fw = new FileWriter("file.txt", true)){
@@ -99,7 +119,12 @@ public class program {
 
 */ 
     }
+    
+
+    }
     sc.close();
+    schdd.close();
+    }
 }
-}
+
 

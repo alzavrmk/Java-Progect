@@ -64,7 +64,7 @@ public class NooteBook1 {
 
     public NooteBook1 add (String strTitle, String strOs, String strcolor, int ramValue1, int hddValue1, int price){
         NooteBook1 nb = new NooteBook1(strTitle,strOs,strcolor,ramValue1,hddValue1,price);
-        System.out.println(nb);
+        //System.out.println(nb);
         return nb;
  /*       this.title = strTitle;
         this.os = strOs;
