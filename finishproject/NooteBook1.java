@@ -1,11 +1,11 @@
 package finishproject;
 
 public class NooteBook1 {
-    private String title;
+    public String title;
     public String os;
     public int ramValue;
     public int hddValue;
-    private String color;
+    public String color;
     public String historyBreak;
 
     public NooteBook1 (String title, String os, String color){
@@ -14,9 +14,7 @@ public class NooteBook1 {
         this.color = color;
     }
 
-    public NooteBook1() {
-        this("None","None");
-    }
+
     public int getramValue(){
         return ramValue;
     }
